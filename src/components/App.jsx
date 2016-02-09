@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Table from './Table.jsx';
 
 class App extends React.Component {
   constructor(){
@@ -10,7 +10,7 @@ class App extends React.Component {
 
     return (
       <div>
-       <h1>Hello world</h1>
+       <Table />
       </div>
     );
   }
