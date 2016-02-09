@@ -20,6 +20,7 @@ class Table extends React.Component {
         }
         this.state.tableSource = tableSource;
         this.state.pageSize=15;
+        this.state.paginationSize=5;
     }
 
     render() {
@@ -48,8 +49,8 @@ class Table extends React.Component {
                         <Pagination currentPage={this.state.currentPage}
                                     pageSize={this.state.pageSize}
                                     totalItems={this.state.tableSource.length}
-                                    totalPages={Math.ceil(this.state.tableSource.length / 15)}
-                                    paginationSize="5"
+                                    totalPages={Math.ceil(this.state.tableSource.length / this.state.pageSize)}
+                                    paginationSize={this.state.paginationSize}
                                     changePage={this.changePage.bind(this)}
                         />
                     </td>
@@ -66,9 +67,9 @@ class Table extends React.Component {
         if (value === 'Previous')
             return this.setState({currentPage: (this.state.currentPage - 1)<1?1:this.state.currentPage - 1})
         if (value === 'Next')
-            return this.setState({currentPage: (this.state.currentPage + 1)>Math.ceil(this.state.tableSource.length / 15)?Math.ceil(this.state.tableSource.length / 15):this.state.currentPage + 1})
+            return this.setState({currentPage: (this.state.currentPage + 1)>Math.ceil(this.state.tableSource.length / this.state.pageSize)?Math.ceil(this.state.tableSource.length / this.state.pageSize):this.state.currentPage + 1})
         if (value === 'Last')
-            return this.setState({currentPage: Math.ceil(this.state.tableSource.length / 15)})
+            return this.setState({currentPage: Math.ceil(this.state.tableSource.length / this.state.pageSize)})
 
         this.setState({currentPage: value})
     }
