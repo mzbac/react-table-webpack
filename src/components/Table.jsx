@@ -25,7 +25,7 @@ class Table extends React.Component {
 
     render() {
 
-        var tableRows = this.state.tableSource.slice((this.state.currentPage-1)*this.state.pageSize+1,(this.state.currentPage-1)*this.state.pageSize+this.state.pageSize+1).map((value)=> {
+        var tableRows = this.state.tableSource.slice((this.state.currentPage-1)*this.state.pageSize,(this.state.currentPage-1)*this.state.pageSize+this.state.pageSize+1).map((value)=> {
             return <TableRow key={value.id} row={value}/>
         })
         return (
